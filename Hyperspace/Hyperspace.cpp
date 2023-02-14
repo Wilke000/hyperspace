@@ -327,14 +327,14 @@ void draw(HyperspaceSaverSettings *inSettings){
 	}
 
 	// update starburst
-	static float starBurstTime = 300.0f;  // burst after 5 minutes
+	static float starBurstTime = 10.0f;  // burst after 5 minutes
 	starBurstTime -= inSettings->frameTime;
 	if(starBurstTime <= 0.0f){
 		float pos[] = {inSettings->camPos[0] + (pathDir[0] * inSettings->depth * (0.5f + rsRandf(0.5f))),
 			rsRandf(2.0f) - 1.0f,
 			inSettings->camPos[2] + (pathDir[2] * inSettings->depth * (0.5f + rsRandf(0.5f)))};
 		inSettings->theStarBurst->restart(pos);  // it won't actually restart unless it's ready to
-		starBurstTime = rsRandf(240.0f) + 60.0f;  // burst again within 1-5 minutes
+		starBurstTime = rsRandf(50.0f) + 10.0f;  // burst again within 1-5 minutes
 	}
 	if(inSettings->dShaders)
 		inSettings->theStarBurst->draw(lerp, inSettings);
